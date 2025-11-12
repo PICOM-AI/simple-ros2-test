@@ -1,0 +1,11 @@
+# Use official ROS 2 Humble image
+FROM ros:humble
+
+# Set working directory
+WORKDIR /root
+
+# Copy your bag folder into the container
+COPY dell_map_90 /root/dell_map_90
+
+# Source ROS 2 setup and play the bag
+CMD ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && ros2 bag play /root/dell_map_90"]

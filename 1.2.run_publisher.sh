@@ -1,0 +1,1 @@
+docker run -it --rm --network host publisher_image

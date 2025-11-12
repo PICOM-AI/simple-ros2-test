@@ -1,0 +1,12 @@
+FROM ros:humble
+
+# Install Python client library and example interfaces
+RUN apt-get update && apt-get install -y \
+    ros-humble-rclpy \
+    ros-humble-example-interfaces \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /ros2_ws
+COPY server.py .
+
+CMD ["bash", "-c", "source /opt/ros/humble/setup.bash && python3 server.py"]

@@ -1,0 +1,8 @@
+# Use official ROS 2 Humble base image
+FROM ros:humble
+
+# Set working directory
+WORKDIR /root
+
+# Source ROS 2 setup and subscribe to /map
+CMD ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && ros2 topic echo /map"]
