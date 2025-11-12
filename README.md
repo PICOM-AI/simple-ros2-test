@@ -81,3 +81,48 @@ This should print out this message if it success, if nothing printout, means it 
 
 `[INFO] [1762961239.313774629] [hello_client]: Result: 12`
 
+
+
+
+## Test 3
+Setup hardware as figure bellow
+![Test 3](figs/3.jpg)
+
+### Prepare (need internet)
+#### On Raspberry Pi:
+Build docker for Service Server
+```bash
+cd simple-ros2-test
+bash 5.1.build_socket_publisher.sh
+```
+
+#### On Laptop:
+Build docker for Service Client
+```bash
+cd simple-ros2-test
+bash 6.1.build_socket_subscriber.sh
+```
+
+### Perform Test (no need internet anymore):
+#### On Raspberry Pi:
+This will serve the socket server
+
+```bash
+cd simple-ros2-test
+bash 5.2.run_socket_publisher.sh
+```
+
+#### On Laptop:
+Please open the script `6.2.run_socket_subscriber.sh` and replace `SOCKET_SERVER_HOST="127.0.0.1"` by the Raspberry Pi IP (this should be VxLAN or P4 assigned IP for the Raspberry Pi).
+
+This will connect to the socket server get result.
+```bash
+cd simple-ros2-test
+bash 6.2.run_socket_subscriber.sh
+```
+
+This should print out this message if it success, if nothing printout, means it fail.
+
+`{"count": 308, "rand": "wX3zGSTx", "ts": 1762963811.2644305}`
+
+`{"count": 309, "rand": "JSmiyOUO", "ts": 1762963812.264774}`

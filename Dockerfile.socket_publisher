@@ -1,0 +1,5 @@
+FROM python:3.11-slim
+WORKDIR /app
+COPY socket_publisher.py .
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+ENTRYPOINT ["python", "socket_publisher.py"]
